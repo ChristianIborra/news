@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "353431151653",
+    "firebase_url": "https://news-76beb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "news-76beb",
+    "storage_bucket": "news-76beb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353431151653:android:35e530aa0c602b8cff0bcc",
+        "android_client_info": {
+          "package_name": "com.ciborra.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353431151653-eue58bich2t0khnec34nt86p2g7afi40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZS6PdoaUipAqcHKHlsCZt39lO7kzZz8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353431151653-eue58bich2t0khnec34nt86p2g7afi40.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
