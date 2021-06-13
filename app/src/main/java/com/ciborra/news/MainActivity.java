@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public String as ;
+    public static String as = "https://www.sport.es/es/rss/last-news/news.xml";
     BottomNavigationView bnvBotonera;
     RecyclerView recyclerView;
     List<data> fetchdata;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     String urlSelect="";
     LectorRss lectorRss;
     TextView a;
+    Button cambiar;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
         bnvBotonera = findViewById(R.id.bnvBotoneraVistaMaps);
         spinner = findViewById(R.id.spinner);
         String url;
-        a = findViewById(R.id.textView);
+        cambiar = findViewById(R.id.button3);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         loada();
-
+        cambiar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
         bnvBotonera.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                            urlSelect = parent.getItemAtPosition(position).toString();
 
                            String url = dates.get(position).getUrl();
-                           a.setText(url);
+
                            as =dates.get(position).getUrl();
 
 
@@ -101,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                        }
                    });
                 }
+
             }
 
             @Override
@@ -109,5 +117,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

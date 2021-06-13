@@ -32,6 +32,7 @@ public class helperadapter extends RecyclerView.Adapter {
         data Data = datalist.get(position);
         viewHolderClass.name.setText(Data.getName());
         viewHolderClass.url.setText(Data.getUrl());
+
     }
 
     @Override
@@ -44,6 +45,7 @@ public class helperadapter extends RecyclerView.Adapter {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             url = itemView.findViewById(R.id.url);
+
         }
     }
 }

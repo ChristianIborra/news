@@ -39,6 +39,7 @@ Button añadir;
         BottomNavigationView bnvBotonera = null;
         name = findViewById(R.id.names);
         url = findViewById(R.id.urls);
+
         añadir = findViewById(R.id.button);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bnvBotonera = findViewById(R.id.bnvBotoneraVistaMaps);
@@ -72,7 +73,12 @@ Button añadir;
                 Map<String, Object> datos = new HashMap();
                 datos.put("name", names);
                 datos.put("url", urls);
+
+                if(names.length()>2|| urls.length()>2){
                 databaseReference.push().setValue(datos);
+
+                finish();
+                startActivity(getIntent());}
             }
         });
         bnvBotonera.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
