@@ -27,14 +27,14 @@ public class LectorRss extends AsyncTask<Void, Void, Void> {
 
     public String direccion;
     URL url;
+
     RecyclerView recyclerView;
     ArrayList<noticia> noticias;
-    // ProgressDialog progressDialog;
+
     public LectorRss(Context context, RecyclerView recyclerView){
         this.recyclerView= recyclerView;
         this.context=context;
-        //progressDialog = new ProgressDialog(context);
-        //progressDialog.setMessage("Cargando...");
+
     }
     @Override
     protected void onPreExecute() {
@@ -74,12 +74,21 @@ public class LectorRss extends AsyncTask<Void, Void, Void> {
                     for(int j = 0; j<itemsChild.getLength(); j++){
                         Node actual = itemsChild.item(j);
                         if (actual.getNodeName().equalsIgnoreCase("title")){
-                            Noticia.setmTitulo(actual.getTextContent());
+                            Noticia.setmTitulo(actual.getTextContent().replaceAll("\\<.*?>",""));
+
                         }else if(actual.getNodeName().equalsIgnoreCase("link")){
                             Noticia.setmEnlace(actual.getTextContent());
                         }else if(actual.getNodeName().equalsIgnoreCase("description")){
-                            Noticia.setmDescripcion(actual.getTextContent());
-                        }else if(actual.getNodeName().equalsIgnoreCase("enclosure ")){
+                            String d;
+                            d=actual.getTextContent().replaceAll("\\<.*?>","");
+                            //Noticia.setmDescripcion(actual.getTextContent().replaceAll("\\<.*?>",""));
+                            d=d.replaceAll("&.*?;","");
+                            d=d.replaceAll("Leer","");
+                            d=d.replaceAll("      ","");
+                            d=d.replaceAll("Más información (Auto)","");
+                            Noticia.setmDescripcion(d);
+
+                        }else if(actual.getNodeName().equalsIgnoreCase("enclosure")){
                             String mUrl = actual.getAttributes().item(0).getTextContent();
                             Noticia.setmImagen(mUrl);
                         }
